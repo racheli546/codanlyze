@@ -1,5 +1,5 @@
 import  ast
-
+import os
 from app.models.Entity import File_len
 
 
@@ -51,6 +51,16 @@ def analyze_file(file_path):
             }
     return file_dict
 
-print(analyze_file(r"C:\Users\user1\Documents\תיכנות\שנה ב\סמסטר א\Pyton\witProject\classes\Repository.py"))
+
+
+def analzye_code(folder_path):
+    allFiles = {}
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".py"):
+                full_path = os.path.join(root, file)
+                allFiles[file] = analyze_file(full_path)
+    return allFiles
+
 
 
