@@ -1,73 +1,53 @@
 
-# 🧠 CodeGuard – Python Code Analysis System (CI via wit push)
+# 🧠 CodeGuard – Python Code Analysis API
 
-**CodeGuard** is a backend system developed as part of a version control tool (Wit),  
-designed to run automated code analysis every time a user performs `wit push`.
+CodeGuard is a backend project developed in Python using FastAPI,  
+designed to analyze Python code and return visual reports and quality alerts.
 
-This project simulates a simplified Continuous Integration (CI) flow for Python projects,  
-focusing on maintaining code quality and providing developers with visual and actionable feedback.
+The system performs static analysis using AST, identifies code issues,  
+and generates visual feedback via matplotlib.
 
 ---
 
 ## 🚀 Project Overview
 
 - 🔧 **Language**: Python  
-- 🌐 **Server**: FastAPI  
-- 🧠 **Code Analysis**: `ast` (Abstract Syntax Tree)  
+- 🌐 **Framework**: FastAPI  
+- 🧠 **Code Analysis**: `ast`  
 - 📊 **Visualization**: `matplotlib`
-
-Every time a user runs `wit push`, the system:
-- Performs static analysis on the pushed Python files
-- Detects common issues
-- Returns detailed reports and visual graphs
-
----
-
-## 📦 Folder Structure
-
-```
-/server
-  ├── main.py
-  ├── analysis.py
-  ├── visualization.py
-  └── models.py
-```
 
 ---
 
 ## 📬 API Endpoints
 
-| Endpoint    | Method | Description                           |
-|-------------|--------|---------------------------------------|
-| `/analyze`  | POST   | Accepts Python files and returns graphs (PNG) |
-| `/alerts`   | POST   | Accepts Python files and returns list of issues |
+| Endpoint    | Method | Description                            |
+|-------------|--------|----------------------------------------|
+| `/analyze`  | POST   | Returns code visualizations (PNG)      |
+| `/alerts`   | POST   | Returns a list of issues in the code   |
 
 ---
 
 ## 🧪 Code Quality Checks
 
-The analysis includes the following validations:
-
-- ❗ Function length > 20 lines  
-- ❗ File length > 200 lines  
-- ❗ Unused variables  
-- ❗ Missing docstrings  
-- ⚠️ (Bonus) Variables with non-English names (e.g., Hebrew)
-
----
-
-## 📊 Generated Graphs
-
-- 📈 Histogram: Function length distribution  
-- 🥧 Pie chart: Issue types  
-- 📊 Bar chart: Issues per file  
-- 🪄 (Optional) Line graph: Issue trends over time  
-
-Graphs are returned as PNG files after each analysis.
+The analysis includes checks such as:
+- Function too long (>20 lines)
+- File too long (>200 lines)
+- Unused variables
+- Missing docstrings
+- (Optional) Non-English variable names
 
 ---
 
-## 🛠️ Running the Server Locally
+## 📊 Graphs Generated
+
+- Histogram of function lengths  
+- Pie chart of issue types  
+- Bar chart: issues per file  
+- Optional: line chart of issue trends  
+
+---
+
+## 🛠️ Running Locally
 
 ### Requirements
 - Python 3.9+
@@ -80,18 +60,9 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The server will run by default on:  
-`http://localhost:8000`
-
----
-
-## 📌 Bonus
- 
-- Easily extendable for additional code quality rules and visualizations
-
 ---
 
 ## ✍️ Author
 
-Developed by Rachel Segal 
-GitHub: (https://github.com/racheli546)
+Developed by Rachel Segal  
+GitHub: [racheli546](https://github.com/racheli546)
